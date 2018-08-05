@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "luhn.js",
+  "sourceRoot": "",
+  "sources": [
+    "luhn.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,MAAA;;EAAA,WAAA,GAAc,QAAA,CAAC,MAAD,CAAA;AACV,QAAA,KAAA,EAAA,MAAA,EAAA,CAAA,EAAA,CAAA,EAAA,GAAA,EAAA,MAAA,EAAA;IAAA,MAAA,GAAS,MAAM,CAAC,KAAP,CAAa,EAAb;IACT,KAAA,GAAQ;IACR,MAAA,GAAS,MAAM,CAAC,MAAP,GAAgB;IACzB,KAAA,gDAAA;;MACI,KAAA,GAAQ,QAAA,CAAS,KAAT;MACR,IAAG,CAAA,GAAI,CAAJ,KAAS,MAAZ;QACI,KAAA,GAAQ,KAAA,IAAS;QACjB,IAAG,KAAA,GAAQ,CAAX;UACI,KAAA,IAAS,EADb;SAFJ;;MAIA,KAAA,IAAS;IANb;WAQA,CAAC,KAAA,GAAQ,EAAT,CAAA,KAAgB;EAZN;;EAcd,MAAM,CAAC,QAAP,GAAkB,QAAA,CAAC,IAAD,CAAA;AACd,QAAA;IAAA,WAAA,GAAc,QAAQ,CAAC,cAAT,CAAwB,IAAxB,CAA6B,CAAC;IAC5C,IAAG,WAAH;MACI,IAAG,WAAA,CAAY,WAAZ,CAAH;eACI,KAAA,CAAM,iBAAN,EADJ;OAAA,MAAA;eAGI,KAAA,CAAM,qBAAN,EAHJ;OADJ;;EAFc;AAdlB",
+  "sourcesContent": [
+    "is_valid_cc = (number) ->\n    digits = number.split('')\n    total = 0\n    parity = digits.length % 2\n    for digit, i in digits\n        digit = parseInt(digit)\n        if i % 2 == parity\n            digit = digit *= 2\n            if digit > 9\n                digit -= 9\n        total += digit\n\n    (total % 10) == 0\n\nwindow.validate = (node) ->\n    card_number = document.getElementById(node).value\n    if card_number\n        if is_valid_cc(card_number)\n            alert(\"Card is valid!!\")\n        else\n            alert(\"Card is NOT valid!!\")"
+  ]
+}

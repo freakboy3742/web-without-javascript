@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>Transcrypt: A web Without Javascript</title>
+    <script src="__javascript__/luhn.js"></script>
+</head>
+<body">
+    <p><a href="..">home</a></p>
+    <h1>A Web Without Javascript</h1>
+    <h2>Transcrypt</h2>
+    <p>To recompile, run:
+        <pre>
+    $ pip install transcrypt
+    $ transcrypt -m -b luhn.py
+        </pre>
+    <p>
+
+    <p>
+        <input id="card_number">
+        <button onclick="luhn.validate('card_number')">Validate</button>
+    </p>
+
+    <p>
+        <input id="card_number_visa" value="4111111111111111">
+        <button onclick="luhn.validate('card_number_visa')">Validate</button>
+    </p>
+    <p>
+        <input id="card_number_mastercard" value="5500000000000004">
+        <button onclick="luhn.validate('card_number_mastercard')">Validate</button>
+    </p>
+    <p>
+        <input id="card_number_amex" value="340000000000009">
+        <button onclick="luhn.validate('card_number_amex')">Validate</button>
+    </p>
+    <p>
+        <input id="card_number_phone" value="001115556345789">
+        <button onclick="luhn.validate('card_number_phone')">Validate</button>
+    </p>
+    <p>
+        <input id="card_number_random" value="0123456701234567">
+        <button onclick="luhn.validate('card_number_random')">Validate</button>
+    </p>
+
+</body>
+</html>

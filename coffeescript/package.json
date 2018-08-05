@@ -1,0 +1,14 @@
+{
+  "name": "luhn",
+  "version": "1.0.0",
+  "description": "A demonstration of a web without Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Russell Keith-Magee",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "coffeescript": "^2.3.1"
+  }
+}

@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>WASM: A web Without Javascript</title>
+
+    <script src="./luhn.js"></script>
+
+    <script type="text/javascript">
+function validate(node) {
+    card_number = document.getElementById(node).value
+    if (card_number) {
+        if (Module.ccall('is_valid_cc', 'int', ['string'], [card_number])) {
+            alert("Card is valid!!")
+        } else {
+            alert("Card is NOT valid!!")
+        }
+    }
+}
+    </script>
+</head>
+<body>
+    <p><a href="..">home</a></p>
+    <h1>A Web Without Javascript</h1>
+    <h2>WASM</h2>
+    <p>To recompile luhn.js, install emscripten, and run:
+        <pre>
+    emcc luhn.c -o luhn.js -s EXPORTED_FUNCTIONS='["_is_valid_cc"]' -s EXTRA_EXPORTED_RUNTIME_METHODS='["ccall"]'
+        </pre>
+    <p>
+        <input id="card_number">
+        <button onclick="validate('card_number')">Validate</button>
+    </p>
+
+    <p>
+        <input id="card_number_visa" value="4111111111111111">
+        <button onclick="validate('card_number_visa')">Validate</button>
+    </p>
+    <p>
+        <input id="card_number_mastercard" value="5500000000000004">
+        <button onclick="validate('card_number_mastercard')">Validate</button>
+    </p>
+    <p>
+        <input id="card_number_amex" value="340000000000009">
+        <button onclick="validate('card_number_amex')">Validate</button>
+    </p>
+    <p>
+        <input id="card_number_phone" value="001115556345789">
+        <button onclick="validate('card_number_phone')">Validate</button>
+    </p>
+    <p>
+        <input id="card_number_random" value="0123456701234567">
+        <button onclick="validate('card_number_random')">Validate</button>
+    </p>
+
+</body>
+</html>

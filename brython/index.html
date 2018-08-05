@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Brython: A web Without Javascript</title>
+
+    <script src="./brython.js"></script>
+
+    <script type="text/python">
+        import luhn
+        from browser import document
+
+        document['button_number'].bind('click', luhn.validate('card_number'))
+        document['button_number_visa'].bind('click', luhn.validate('card_number_visa'))
+        document['button_number_mastercard'].bind('click', luhn.validate('card_number_mastercard'))
+        document['button_number_amex'].bind('click', luhn.validate('card_number_amex'))
+        document['button_number_phone'].bind('click', luhn.validate('card_number_phone'))
+        document['button_number_random'].bind('click', luhn.validate('card_number_random'))
+    </script>
+
+</head>
+<body onload="brython(1)">
+    <p><a href="..">home</a></p>
+    <h1>A Web Without Javascript</h1>
+    <h2>Brython</h2>
+    <p>
+        <input id="card_number">
+        <button id="button_number">Validate</button>
+    </p>
+
+    <p>
+        <input id="card_number_visa" value="4111111111111111">
+        <button id="button_number_visa">Validate</button>
+    </p>
+    <p>
+        <input id="card_number_mastercard" value="5500000000000004">
+        <button id="button_number_mastercard">Validate</button>
+    </p>
+    <p>
+        <input id="card_number_amex" value="340000000000009">
+        <button id="button_number_amex">Validate</button>
+    </p>
+    <p>
+        <input id="card_number_phone" value="001115556345789">
+        <button id="button_number_phone">Validate</button>
+    </p>
+    <p>
+        <input id="card_number_random" value="0123456701234567">
+        <button id="button_number_random">Validate</button>
+    </p>
+
+</body>
+</html>

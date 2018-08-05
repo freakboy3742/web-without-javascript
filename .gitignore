@@ -1,0 +1,17 @@
+*.pyc
+*~
+.*.sw[op]
+*.egg-info
+.DS_Store
+dist
+build
+local
+_build
+distribute-*
+venv
+batavia
+.eggs/
+.python-version
+coffeescript/node_modules
+# PyCharm settings
+.idea

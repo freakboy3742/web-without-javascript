@@ -1,0 +1,11 @@
+{
+	"version": 3,
+	"file": "/Users/rkm/projects/beeware/temp/luhn/__javascript__/luhn.mod.js",
+	"sources": [
+		"/Users/rkm/projects/beeware/temp/luhn/luhn.py"
+	],
+	"sourcesContent": [
+		"def is_valid_cc(number):\n    digits = [int(x) for x in number]\n    total = 0\n    parity = len(digits) % 2\n    for i, digit in enumerate(digits):\n        if i % 2 == parity:\n            digit *= 2\n        total += (digit // 10) % 10\n    return total % 10 == 0\n\n\ndef validate(node):\n    card_number = document.getElementById(node).value\n    if card_number:\n        if is_valid_cc(card_number):\n            alert(\"Card is valid!!\")\n        else:\n            alert(\"Card is NOT valid!!\")\n\n\n# cards = {\n#     \"mine\": '4072209015455795',\n#     \"Visa\": '4111111111111111',\n#     \"MasterCard\": '5500000000000004',\n#     \"American Express\": '340000000000009',\n#     \"Diner's Club\": '30000000000004',\n#     \"Discover\": '6011000000000004',\n\n#     \"Phone\": '001115556345789',\n#     \"Bad\": '0123456701234567',\n# }\n\n# for card, number in cards.items():\n#     print(card, number, is_valid_cc(number))\n"
+	],
+	"mappings": "AAAA;AAAA;AAAA;AACA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AACA;AACA;AACA;AAAA;AAAA;AAAA;AAAA;AACA;AAAA;AAAA;AAAA;AAAA;AAGA;AAAA;AAGA;AACA;AACA;AACA;AACA;AAAA;AACA;AACA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA"
+}
