@@ -20,7 +20,8 @@ function validate(node) {
 <body>
     <p><a href="..">home</a></p>
     <h1>A Web Without Javascript</h1>
-    <h2>WASM</h2>
+    <h2>Web Assembly (WASM)</h2>
+    <p>Business logic written in <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a>, compiled with <a href="http://emscripten.org">Emscripten<a> into <a href="https://webassembly.org/">Web Assembly (WASM)</a>.</p>    <p>Source code: <a href="luhn.c">luhn.c</a></p>
     <p>To recompile luhn.js, install emscripten, and run:
         <pre>
     emcc luhn.c -o luhn.js -s EXPORTED_FUNCTIONS='["_is_valid_cc"]' -s EXTRA_EXPORTED_RUNTIME_METHODS='["ccall"]'

@@ -21,6 +21,24 @@
     <p><a href="..">home</a></p>
     <h1>A Web Without Javascript</h1>
     <h2>Brython</h2>
+    <p>Business logic written in <a href="https://python.org">Python</a>, executed at runtime using <a href="https://brython.info/">Brython<a>.</p>
+    <p>Source code: <a href="luhn.py">luhn.py</a></p>
+    <p>There is an additional block of Python code in the <code>&lt;head&gt;</code> block of this page:
+        <pre>
+    &lt;script type="text/python"&gt;
+        import luhn
+        from browser import document
+
+        document['button_number'].bind('click', luhn.validate('card_number'))
+        document['button_number_visa'].bind('click', luhn.validate('card_number_visa'))
+        document['button_number_mastercard'].bind('click', luhn.validate('card_number_mastercard'))
+        document['button_number_amex'].bind('click', luhn.validate('card_number_amex'))
+        document['button_number_phone'].bind('click', luhn.validate('card_number_phone'))
+        document['button_number_random'].bind('click', luhn.validate('card_number_random'))
+    &lt;/script&gt;
+        </pre>
+
+    </p>
     <p>
         <input id="card_number">
         <button id="button_number">Validate</button>
