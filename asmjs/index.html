@@ -1,5 +1,13 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <title>asm.js: A web Without Javascript</title>
 
     <script src="./luhn.js"></script>
@@ -18,40 +26,60 @@ function validate(node) {
     </script>
 </head>
 <body>
-    <p><a href="..">home</a></p>
-    <h1>A Web Without Javascript</h1>
-    <h2>asm.js</h2>
-    <p>Business logic written in <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a>, compiled with <a href="http://emscripten.org">Emscripten<a> into <a href="http://asmjs.org">asm.js</a>.</p>
-    <p>Source code: <a href="luhn.c">luhn.c</a></p>
-    <p>To recompile luhn.js, install emscripten, and run:
-        <pre>
-    emcc luhn.c -o luhn.js -s EXPORTED_FUNCTIONS='["_is_valid_cc"]' -s EXTRA_EXPORTED_RUNTIME_METHODS='["ccall"]' -s WASM=0
-        </pre>
-    <p>
-        <input id="card_number">
-        <button onclick="validate('card_number')">Validate</button>
-    </p>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <a class="navbar-brand" href="/">A Web Without Javascript</a>
+    </nav>
+    <main role="main" class="container">
+        <h1>asm.js</h1>
+        <p>Business logic written in <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a>, compiled with <a href="http://emscripten.org">Emscripten<a> into <a href="http://asmjs.org">asm.js</a>.</p>
+        <p>Source code: <a href="luhn.c">luhn.c</a> (Compiles to <a href="luhn.js">luhn.js</a>)</p>
+        <p>To recompile luhn.js, install emscripten, and run:
+            <pre>
+        emcc luhn.c -o luhn.js -s EXPORTED_FUNCTIONS='["_is_valid_cc"]' -s EXTRA_EXPORTED_RUNTIME_METHODS='["ccall"]' -s WASM=0
+            </pre>
+        </p>
+        <p>There is also a small piece of Javascript bootstrap code in the <code>&lt;head&gt;</code> to expose the Python function as a click handler:
+            <pre>
+    &lt;script type="text/javascript"&gt;
+        function validate(node) {
+            card_number = document.getElementById(node).value
+            if (card_number) {
+                if (Module.ccall('is_valid_cc', 'int', ['string'], [card_number])) {
+                    alert("Card is valid!!")
+                } else {
+                    alert("Card is NOT valid!!")
+                }
+            }
+        }
+    &lt;/script&gt;
+            </pre>
+        </p>
+        <p>
+            <input id="card_number">
+            <button onclick="validate('card_number')">Validate</button>
+        </p>
 
-    <p>
-        <input id="card_number_visa" value="4111111111111111">
-        <button onclick="validate('card_number_visa')">Validate</button>
-    </p>
-    <p>
-        <input id="card_number_mastercard" value="5500000000000004">
-        <button onclick="validate('card_number_mastercard')">Validate</button>
-    </p>
-    <p>
-        <input id="card_number_amex" value="340000000000009">
-        <button onclick="validate('card_number_amex')">Validate</button>
-    </p>
-    <p>
-        <input id="card_number_phone" value="001115556345789">
-        <button onclick="validate('card_number_phone')">Validate</button>
-    </p>
-    <p>
-        <input id="card_number_random" value="0123456701234567">
-        <button onclick="validate('card_number_random')">Validate</button>
-    </p>
-
+        <p>
+            <input id="card_number_visa" value="4111111111111111">
+            <button onclick="validate('card_number_visa')">Validate</button>
+        </p>
+        <p>
+            <input id="card_number_mastercard" value="5500000000000004">
+            <button onclick="validate('card_number_mastercard')">Validate</button>
+        </p>
+        <p>
+            <input id="card_number_amex" value="340000000000009">
+            <button onclick="validate('card_number_amex')">Validate</button>
+        </p>
+        <p>
+            <input id="card_number_phone" value="001115556345789">
+            <button onclick="validate('card_number_phone')">Validate</button>
+        </p>
+        <p>
+            <input id="card_number_random" value="0123456701234567">
+            <button onclick="validate('card_number_random')">Validate</button>
+        </p>
+    </main>
+    <a href="https://github.com/freakboy3742/web-without-javascript"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
 </body>
 </html>

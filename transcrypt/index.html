@@ -1,46 +1,57 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <title>Transcrypt: A web Without Javascript</title>
     <script src="__javascript__/luhn.js"></script>
 </head>
-<body">
-    <p><a href="..">home</a></p>
-    <h1>A Web Without Javascript</h1>
-    <h2>Transcrypt</h2>
-    <p>Business logic written in <a href="https://python.org">Python</a>, compiled to Javascript using <a href="https://www.transcrypt.org/">Transcrypt<a>.</p>
-    <p>Source code: <a href="luhn.py">luhn.py</a></p>
-    <p>To recompile luhn.py into javascript, run:
-        <pre>
-    $ pip install transcrypt
-    $ transcrypt -m -b luhn.py
-        </pre>
-    <p>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <a class="navbar-brand" href="/">A Web Without Javascript</a>
+    </nav>
+    <main role="main" class="container">
+        <h1>Transcrypt</h1>
+        <p>Business logic written in <a href="https://python.org">Python</a>, compiled to Javascript using <a href="https://www.transcrypt.org/">Transcrypt<a>.</p>
+        <p>Source code: <a href="luhn.py">luhn.py</a> (Compiles to <a href="__javascript__/luhn.js">luhn.js</a>)</p>
+        <p>To recompile luhn.py into javascript, run:
+            <pre>
+        $ pip install transcrypt
+        $ transcrypt -m -b luhn.py
+            </pre>
+        <p>
 
-    <p>
-        <input id="card_number">
-        <button onclick="luhn.validate('card_number')">Validate</button>
-    </p>
+        <p>
+            <input id="card_number">
+            <button onclick="luhn.validate('card_number')">Validate</button>
+        </p>
 
-    <p>
-        <input id="card_number_visa" value="4111111111111111">
-        <button onclick="luhn.validate('card_number_visa')">Validate</button>
-    </p>
-    <p>
-        <input id="card_number_mastercard" value="5500000000000004">
-        <button onclick="luhn.validate('card_number_mastercard')">Validate</button>
-    </p>
-    <p>
-        <input id="card_number_amex" value="340000000000009">
-        <button onclick="luhn.validate('card_number_amex')">Validate</button>
-    </p>
-    <p>
-        <input id="card_number_phone" value="001115556345789">
-        <button onclick="luhn.validate('card_number_phone')">Validate</button>
-    </p>
-    <p>
-        <input id="card_number_random" value="0123456701234567">
-        <button onclick="luhn.validate('card_number_random')">Validate</button>
-    </p>
-
+        <p>
+            <input id="card_number_visa" value="4111111111111111">
+            <button onclick="luhn.validate('card_number_visa')">Validate</button>
+        </p>
+        <p>
+            <input id="card_number_mastercard" value="5500000000000004">
+            <button onclick="luhn.validate('card_number_mastercard')">Validate</button>
+        </p>
+        <p>
+            <input id="card_number_amex" value="340000000000009">
+            <button onclick="luhn.validate('card_number_amex')">Validate</button>
+        </p>
+        <p>
+            <input id="card_number_phone" value="001115556345789">
+            <button onclick="luhn.validate('card_number_phone')">Validate</button>
+        </p>
+        <p>
+            <input id="card_number_random" value="0123456701234567">
+            <button onclick="luhn.validate('card_number_random')">Validate</button>
+        </p>
+    </main>
+    <a href="https://github.com/freakboy3742/web-without-javascript"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
 </body>
 </html>

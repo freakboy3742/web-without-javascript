@@ -1,5 +1,13 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <title>Brython: A web Without Javascript</title>
 
     <script src="./brython.js"></script>
@@ -18,52 +26,55 @@
 
 </head>
 <body onload="brython(1)">
-    <p><a href="..">home</a></p>
-    <h1>A Web Without Javascript</h1>
-    <h2>Brython</h2>
-    <p>Business logic written in <a href="https://python.org">Python</a>, executed at runtime using <a href="https://brython.info/">Brython<a>.</p>
-    <p>Source code: <a href="luhn.py">luhn.py</a></p>
-    <p>There is an additional block of Python code in the <code>&lt;head&gt;</code> block of this page:
-        <pre>
-    &lt;script type="text/python"&gt;
-        import luhn
-        from browser import document
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <a class="navbar-brand" href="/">A Web Without Javascript</a>
+    </nav>
+    <main role="main" class="container">
+        <h1>Brython</h1>
+        <p>Business logic written in <a href="https://python.org">Python</a>, executed at runtime using <a href="https://brython.info/">Brython<a>.</p>
+        <p>Source code: <a href="luhn.py">luhn.py</a></p>
+        <p>There is an additional block of Python code in the <code>&lt;head&gt;</code> block of this page:
+            <pre>
+        &lt;script type="text/python"&gt;
+            import luhn
+            from browser import document
 
-        document['button_number'].bind('click', luhn.validate('card_number'))
-        document['button_number_visa'].bind('click', luhn.validate('card_number_visa'))
-        document['button_number_mastercard'].bind('click', luhn.validate('card_number_mastercard'))
-        document['button_number_amex'].bind('click', luhn.validate('card_number_amex'))
-        document['button_number_phone'].bind('click', luhn.validate('card_number_phone'))
-        document['button_number_random'].bind('click', luhn.validate('card_number_random'))
-    &lt;/script&gt;
-        </pre>
+            document['button_number'].bind('click', luhn.validate('card_number'))
+            document['button_number_visa'].bind('click', luhn.validate('card_number_visa'))
+            document['button_number_mastercard'].bind('click', luhn.validate('card_number_mastercard'))
+            document['button_number_amex'].bind('click', luhn.validate('card_number_amex'))
+            document['button_number_phone'].bind('click', luhn.validate('card_number_phone'))
+            document['button_number_random'].bind('click', luhn.validate('card_number_random'))
+        &lt;/script&gt;
+            </pre>
 
-    </p>
-    <p>
-        <input id="card_number">
-        <button id="button_number">Validate</button>
-    </p>
+        </p>
+        <p>
+            <input id="card_number">
+            <button id="button_number">Validate</button>
+        </p>
 
-    <p>
-        <input id="card_number_visa" value="4111111111111111">
-        <button id="button_number_visa">Validate</button>
-    </p>
-    <p>
-        <input id="card_number_mastercard" value="5500000000000004">
-        <button id="button_number_mastercard">Validate</button>
-    </p>
-    <p>
-        <input id="card_number_amex" value="340000000000009">
-        <button id="button_number_amex">Validate</button>
-    </p>
-    <p>
-        <input id="card_number_phone" value="001115556345789">
-        <button id="button_number_phone">Validate</button>
-    </p>
-    <p>
-        <input id="card_number_random" value="0123456701234567">
-        <button id="button_number_random">Validate</button>
-    </p>
-
+        <p>
+            <input id="card_number_visa" value="4111111111111111">
+            <button id="button_number_visa">Validate</button>
+        </p>
+        <p>
+            <input id="card_number_mastercard" value="5500000000000004">
+            <button id="button_number_mastercard">Validate</button>
+        </p>
+        <p>
+            <input id="card_number_amex" value="340000000000009">
+            <button id="button_number_amex">Validate</button>
+        </p>
+        <p>
+            <input id="card_number_phone" value="001115556345789">
+            <button id="button_number_phone">Validate</button>
+        </p>
+        <p>
+            <input id="card_number_random" value="0123456701234567">
+            <button id="button_number_random">Validate</button>
+        </p>
+    </main>
+    <a href="https://github.com/freakboy3742/web-without-javascript"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
 </body>
 </html>
