@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Batavia: A web Without Javascript</title>
+
+    <script src="./batavia.js"></script>
+
+    <script id="batavia-luhn" type="application/python-bytecode">
+7gwNCj91ZlsCAgAA4wAAAAAAAAAAAAAAAAMAAABAAAAAc3wAAABkAABkAQBsAABaAABkAABkAQBs
+AQBaAQBkAgBkAwCEAABaAgBlAABqAwBqBABlAQBqBQBkBAAZgwEAagYAWgcAZQcAcngAZQIAZQcA
+gwEAcmUAZQAAaggAagkAZAUAgwEAAXF4AGUAAGoIAGoJAGQGAIMBAAFuAABkAQBTKQfpAAAAAE5j
+AQAAAAAAAAAGAAAABAAAAEMAAABzgwAAAGQBAGQCAIQAAHwAAESDAQB9AQBkAwB9AgB0AAB8AQCD
+AQBkBAAWfQMAeEkAdAEAfAEAgwEARF07AFwCAH0EAH0FAHwEAGQEABZ8AwBrAgByXwB8BQBkBAA5
+fQUAbgAAfAIAfAUAZAUAGmQFABY3fQIAcTYAV3wCAGQFABZkAwBrAgBTKQZOYwEAAAAAAAAAAgAA
+AAQAAABTAAAAcxwAAABnAAB8AABdEgB9AQB0AAB8AQCDAQCRAgBxBgBTqQApAdoDaW50KQLaAi4w
+2gF4cgIAAAByAgAAAPo8L3Zhci9mb2xkZXJzLzlwL256djQwbF85NzRkZGhwMWhmcmNjYnB3ODAw
+MDBnbi9UL3RtcG44dV82Mmgw+go8bGlzdGNvbXA+BQAAAHMCAAAACQB6H2lzX3ZhbGlkX2NjLjxs
+b2NhbHM+LjxsaXN0Y29tcD5yAQAAAOkCAAAA6QoAAAApAtoDbGVu2gllbnVtZXJhdGUpBtoGbnVt
+YmVy2gZkaWdpdHPaBXRvdGFsWgZwYXJpdHnaAWnaBWRpZ2l0cgIAAAByAgAAAHIGAAAA2gtpc192
+YWxpZF9jYwQAAABzEAAAAAABEwEGARABGQEQAQ0BFgFyEQAAAOkBAAAAeg9DYXJkIGlzIHZhbGlk
+ISF6E0NhcmQgaXMgTk9UIHZhbGlkISEpCloDZG9t2gNzeXNyEQAAAFoIZG9jdW1lbnRaDmdldEVs
+ZW1lbnRCeUlk2gRhcmd22gV2YWx1ZVoLY2FyZF9udW1iZXJaBndpbmRvd9oFYWxlcnRyAgAAAHIC
+AAAAcgIAAAByBgAAANoIPG1vZHVsZT4BAAAAcw4AAAAMAQwCDAocAQYBDAETAg==
+    </script>
+
+    <script type="text/javascript">
+        window.vm = new batavia.VirtualMachine({})
+        function validate(node) {
+          window.vm.run('luhn', [node])
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <a class="navbar-brand" href="/">A Web Without Javascript</a>
+    </nav>
+    <main role="main" class="container">
+        <h1>Batavia</h1>
+        <p>Business logic written in <a href="https://python.org">Python</a>, compiled to bytecode, and executed at runtime using <a href="https://pybee.org/project/projects/bridges/batavia/">Batavia<a>.</p>
+        <p>Source code: <a href="luhn.py">luhn.py</a></p>
+        <p>To generate the bytecode payload, run the following in a Python 3.4 shell:
+            <pre>
+        import base64
+        import py_compile
+
+        py_compile.compile('luhn.py', cfile='luhn.pyc')
+        with open('luhn.py', 'rb') as pyc:
+            print(base64.encodebytes(pyc.read()).decode('utf-8'))
+
+            </pre>
+        This will output the base64 encoded bytecode to be copied into the script tag on this page.
+        </p>
+        <p>There is also a small piece of Javascript bootstrap code in the <code>&lt;head&gt;</code> to expose the Python function as a click handler:
+            <pre>
+        &lt;script type="text/javascript"&gt;
+            window.vm = new batavia.VirtualMachine({})
+            function validate(node) {
+              window.vm.run('luhn', [node])
+            }
+        &lt;/script&gt;
+            </pre>
+        </p>
+        <p>
+            <input id="card_number">
+            <button onclick="validate('card_number')">Validate</button>
+        </p>
+
+        <p>
+            <input id="card_number_visa" value="4111111111111111">
+            <button onclick="validate('card_number_visa')">Validate</button>
+        </p>
+        <p>
+            <input id="card_number_mastercard" value="5500000000000004">
+            <button onclick="validate('card_number_mastercard')">Validate</button>
+        </p>
+        <p>
+            <input id="card_number_amex" value="340000000000009">
+            <button onclick="validate('card_number_amex')">Validate</button>
+        </p>
+        <p>
+            <input id="card_number_phone" value="001115556345789">
+            <button onclick="validate('card_number_phone')">Validate</button>
+        </p>
+        <p>
+            <input id="card_number_random" value="0123456701234567">
+            <button onclick="validate('card_number_random')">Validate</button>
+        </p>
+    </main>
+    <a href="https://github.com/freakboy3742/web-without-javascript"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+</body>
+</html>
