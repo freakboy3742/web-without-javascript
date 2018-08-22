@@ -5,7 +5,9 @@ def is_valid_cc(number):
     for i, digit in enumerate(digits):
         if i % 2 == parity:
             digit *= 2
-        total += (digit // 10) % 10
+            if (digit > 9):
+                digit -= 9
+        total += digit
     return total % 10 == 0
 
 

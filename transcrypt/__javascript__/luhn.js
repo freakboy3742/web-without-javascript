@@ -1,5 +1,5 @@
 "use strict";
-// Transcrypt'ed from Python, 2018-08-05 09:14:56
+// Transcrypt'ed from Python, 2018-08-22 13:00:25
 function luhn () {
     var __symbols__ = ['__py3.6__', '__esv5__'];
     var __all__ = {};
@@ -2219,8 +2219,11 @@ function luhn () {
 				var digit = __left0__ [1];
 				if (__mod__ (i, 2) == parity) {
 					digit *= 2;
+					if (digit > 9) {
+						digit -= 9;
+					}
 				}
-				total += __mod__ (Math.floor (digit / 10), 10);
+				total += digit;
 			}
 			return __mod__ (total, 10) == 0;
 		};

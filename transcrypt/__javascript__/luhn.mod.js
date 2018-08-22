@@ -19,8 +19,11 @@
 				var digit = __left0__ [1];
 				if (__mod__ (i, 2) == parity) {
 					digit *= 2;
+					if (digit > 9) {
+						digit -= 9;
+					}
 				}
-				total += __mod__ (Math.floor (digit / 10), 10);
+				total += digit;
 			}
 			return __mod__ (total, 10) == 0;
 		};
