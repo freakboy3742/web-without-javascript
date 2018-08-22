@@ -22,6 +22,7 @@
         <p>Business logic written in <a href="https://python.org">Python</a>, executed at runtime using <a href="https://github.com/iodide-project/pyodide">Pyodide<a>. Source is embedded as a string in a Javascript block.</p>
         <p>It takes several seconds for the interpreter to download and initialize; once the interpreter is ready,
         the validate buttons will become enabled.</p>
+        <p><b>This demo does not currently work on Safari</b> due to Safari's lack of a streaming WebAssembly loader, which is required by Pyodide.</p>
         <p>Source code: <a href="luhn.js">luhn.js</a></p>
         <p>
             <input id="card_number">
